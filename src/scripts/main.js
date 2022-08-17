@@ -36,8 +36,15 @@ const getPhonesDetails = () => {
     });
 };
 
+const waitingMessage = document.createElement('p');
+
+waitingMessage.textContent = 'Fetching phones...';
+document.body.append(waitingMessage);
+
 getPhonesDetails()
   .then(allPhones => {
+    waitingMessage.remove();
+
     const list = document.createElement('ul');
 
     document.body.append(list);
